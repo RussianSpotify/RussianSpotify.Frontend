@@ -1,0 +1,409 @@
+.player-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Тёмно-тёмно-серый фон */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; /* Распределение элементов по горизонтали */
+    align-items: center; /* Выравнивание элементов по вертикали */
+    padding: 10px 0;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.shadow {
+    box-shadow: 0 0 0 9999px rgba(0,0,0, 0.5);
+    transition: all 0.3ms ease;
+}
+
+.player {
+    display: flex;
+    flex-direction: row;
+    margin: 2px 25%;
+    padding-left: 5px;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #444; /* Цвет кнопок */
+    cursor: pointer;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.player-music-image-container {
+    display: flex;
+    align-items: center; /* Выравнивание изображения по вертикали */
+    margin-left: 20px; /* Отступ между кнопками и изображением */
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.player-music-image-container:hover {
+    cursor: pointer;
+}
+
+.player-music-image-container:hover img {
+    box-shadow: 0 0 10px rgb(168, 2, 255);
+    transition: 0.5s;
+}
+
+.close-expanded:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(168, 2, 255);
+    transition: 0.4s;
+}
+
+.player-music-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.progress__container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center; /* Выравнивание прогресс-бара по вертикали */
+    width: calc(550px + 8 * (100vw - 320px) / 380);
+    background: #555;
+    height: 5px;
+    margin: 15px 20px 0 30px;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.player-content {
+    align-items: center;
+    justify-content: center;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.song-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: margin-bottom 0.3s ease-in-out;
+    gap: 5px;
+}
+
+.progress {
+    height: 5px;
+    background-color: mediumpurple; /* Цвет прогресс бара */
+    width: 0;
+    box-shadow: 0 0 10px mediumpurple;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.volume-button {
+    display: flex;
+    align-items: center;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.like-button {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.player-artist-link {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.player-artist-link:hover {
+    color: mediumpurple;
+    cursor: pointer;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.volume {
+    margin: 10px 20px;
+    height: 40px;
+    transition: margin-bottom 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.volume-slider {
+    transform: rotate(-360deg);
+    -webkit-appearance: slider-vertical;
+    position: absolute;
+    width: 50px;
+    bottom: 70px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+input[type=range] {
+    width: 100px;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transform: rotate(-90deg);
+
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    border-radius: 10px/100%;
+    height: 10px;
+    border: 2px solid #333;
+    background: linear-gradient(to right, #444, #666);
+    transform: rotate(-360deg);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background: #bc75ff;
+    box-shadow: 0 0 10px mediumpurple;
+    border-radius: 10px/100%;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    -webkit-appearance: none;
+    margin-top: -4px;
+    transform: rotate(-360deg);
+    align-self: center;
+}
+
+input[type=range]::-moz-range-track {
+    border-radius: 10px/100%;
+    height: 5px;
+    background-color: #020202;
+    transform: rotate(-360deg);
+}
+
+input[type=range]::-moz-range-thumb {
+    background: #020202;
+    border-radius: 10px/100%;
+    cursor: pointer;
+    transform: rotate(-360deg);
+}
+
+input[type=range] {
+    animation: ani 0.5s forwards;
+}
+
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.player-music-image {
+    animation: 12s linear 0s normal none infinite running rot;
+    -webkit-animation: 12s linear 0s normal none infinite running rot;
+    transition: all 0.3s ease-in-out;
+}
+
+@keyframes rot {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rot {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.player-wrapper.expanded {
+    background-color: rgba(0, 0, 0, 0);
+    bottom: 0;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.player.expanded {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    left: 30%;
+    max-width: 600px; /* Максимальная ширина плеера */
+    background-color: #333; /* Тёмно-тёмно-серый фон */
+    border-radius: 10px; /* Закругленные углы */
+    padding: 20px; /* Поля */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: margin-top 0.3s ease-in-out;
+}
+
+.buttons.expanded {
+    transition: margin-top 0.3s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn.expanded {
+    width: 60px;
+    height: 60px;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.player-music-image-container.expanded {
+    margin-bottom: 20px;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.player-music-image.expanded {
+    width: 350px;
+    height: 350px;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.player-content.expanded {
+    margin-bottom: 20px;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.progress__container.expanded {
+    width: 175%;
+    margin-bottom: 20px;
+    margin-left: -40%;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.progress.expanded {
+    height: 8px;
+    width: 175%;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.actions.expanded {
+    width: 100%;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.volume.expanded {
+    margin: 20px;
+
+    z-index: 1;
+    transition: margin-bottom 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.volume-slider.expanded {
+    bottom: 70px;
+    width: 100px;
+    z-index: 1;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.close-expanded {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+.close-expanded:hover {
+    transform: rotate(90deg);
+}
+
+.current-playlist-div {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-playlist-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.current-playlist-div.expanded {
+    display: none;
+}
+
+.current-playlist-container.opened .music-menu {
+    position: absolute;
+    width: 800px;
+    z-index: 2;
+    background: rgba(18, 15, 15, 0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 2px 8px;
+    border-radius: 5px;
+    animation: fadeIn 0.2s ease;
+    bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.opened .playlist-page__songs__list__main__song-card__liked {
+    display: none;
+}
+
+.opened .music-more-button {
+    display: none;
+}
+
+.opened .playlist-page__songs__list__main__song-card__length {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.opened .playlist-page__songs__list__main__song-card__album {
+    display: flex;
+    justify-content: center;
+}
+
+.opened .playlist-page__songs__list__main__song-card {
+    margin: 2px 0;
+}
+
+
+
+
