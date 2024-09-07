@@ -2,7 +2,6 @@ import "./styles/AuthForm.css";
 import React, {useContext, useState} from "react";
 import InputLoginWidget from "../InputLoginWidget/InputLoginWidget";
 import {VkButtonSvg} from "../../../../assets/mock/loginpage/buttons-SVGs/VkButtonSvg";
-import {YandexButtonSvg} from "../../../../assets/mock/loginpage/buttons-SVGs/YandexButtonSvg";
 import {GoogleButtonSvg} from "../../../../assets/mock/loginpage/buttons-SVGs/GoogleButtonSvg";
 import {login} from "../../../../http/authApi";
 import UserLoginDto from "../../../../utils/dto/user/userLoginDto";
@@ -11,7 +10,9 @@ import routeNames from "../../../../utils/routeNames";
 import {UserContext} from "../../../../index";
 import {observer} from "mobx-react-lite";
 import loadUser from "../../../../functions/loadUser";
+import { oAuthRoutes } from "../../../../utils/oauthUrls/oAuthRoutes";
 import {codeConfirmationOperations} from "../../../../utils/operations/codeConfirmationOperations";
+import { YandexButtonSvg } from "../../../../assets/mock/loginpage/buttons-SVGs/YandexButtonSvg";
 
 const AuthForm = observer(() => {
     const [email, setEmail] = useState("")
@@ -47,36 +48,26 @@ const AuthForm = observer(() => {
             })
     }
 
+    const externalLoginGoogle = (e: any) => {
+        e.preventDefault();
+        window.location.href = oAuthRoutes.OAuthGoogleUrl;
+    }
+
     return (
         <div className="auth-form-container">
-            <Link
-                to={`${process.env.REACT_APP_SPOTIFY_API}api/OAuth/ExternalLogin?provider=Vkontakte`}
-                className="rounded-button rounded-blue-button">
-                <div className="svg-container">
-                    <VkButtonSvg/>
-                </div>
-                Continue with VK
-            </Link>
-            <Link
-                to={`${process.env.REACT_APP_SPOTIFY_API}api/OAuth/ExternalLogin?provider=Yandex`}
-                className="rounded-button rounded-red-button">
-                <div className="svg-container">
-                    <YandexButtonSvg/>
-                </div>
-                Continue with Yandex
-            </Link>
-            <Link
-                to={`${process.env.REACT_APP_SPOTIFY_API}api/OAuth/ExternalLogin?provider=Google`}
+            <button
+                onClick={(e) => externalLoginGoogle(e)}
+                type={'button'}
                 className="rounded-button rounded-white-button">
                 <div className="svg-container">
                     <GoogleButtonSvg/>
                 </div>
                 Continue with Google
-            </Link>
+            </button>
             <div className="separator-line"/>
             <div className="border-separator-horizontal"/>
             <p className="header-text-styles">or</p>
-            <form>
+            <form onSubmit={(e) => e.preventDefault()}>
                 <InputLoginWidget
                     email={email}
                     setEmail={setEmail}
