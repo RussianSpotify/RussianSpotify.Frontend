@@ -37,7 +37,7 @@ jobs:
         CI: false
 
     - name: ESLint
-      run: lint
+      run: npm run lint
 
     - name: Run the tests
       run: npm test
