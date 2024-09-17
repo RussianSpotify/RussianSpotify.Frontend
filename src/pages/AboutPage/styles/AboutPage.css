@@ -10,11 +10,11 @@ body {
     align-items: center;
 }
 
-.about-us-photo__image{
+.about-us-photo__image {
     max-width: 600px;
 }
 
-.about-our-company{
+.about-our-company {
     margin-top: 100px;
     margin-bottom: 100px;
     width: 100%;
@@ -24,17 +24,17 @@ body {
     align-items: center;
 }
 
-.about-our-company__title{
+.about-our-company__title {
     font-size: 80px;
 }
 
-.about-our-company__description{
+.about-our-company__description {
     max-width: 100%;
     font-size: 40px;
     font-weight: 400;
 }
 
-.about-image-card{
+.about-image-card {
     max-width: 400px;
 }
 
@@ -59,7 +59,7 @@ body {
     position: relative;
 }
 
-.about_us_photos{
+.about_us_photos {
     display: flex;
     flex-wrap: wrap;
     max-height: 250px;
@@ -69,7 +69,7 @@ body {
     overflow-x: hidden;
 }
 
-.about-us-photo-image{
+.about-us-photo-image {
     margin-left: 10px;
     width: 100%;
     border: 1px solid rgb(128, 128, 128);
@@ -82,7 +82,7 @@ body {
     margin: 0 auto;
 }
 
-.map{
+.map {
     width: 50%;
     height: 800px;
 }
@@ -91,7 +91,7 @@ body {
     margin-bottom: 20px;
 }
 
-.about-description{
+.about-description {
     margin: 0 auto;
     width: 90%;
 }
@@ -111,17 +111,17 @@ body {
     text-align: center;
 }
 
-.about-us-photo{
+.about-us-photo {
     margin-bottom: 40px;
 }
 
-.about-us-photo__title{
+.about-us-photo__title {
     margin-bottom: 50px;
     text-align: center;
     font-size: 50px;
 }
 
-.about-footer{
+.about-footer {
     height: 150px;
 }
 
@@ -129,7 +129,7 @@ body {
     margin-bottom: 50px;
 }
 
-.about-stack__technologies{
+.about-stack__technologies {
     display: flex;
     justify-content: center;
 }
@@ -141,19 +141,19 @@ body {
 }
 
 @media screen and (min-width: 1500px) {
-    .about-our-company__title{
+    .about-our-company__title {
         font-size: 40px;
     }
 
-    .about-our-company__description{
+    .about-our-company__description {
         font-size: 40px;
     }
 
-    .about-us-photo-image{
+    .about-us-photo-image {
         max-width: 70%;
     }
 
-    .about_us_photos{
+    .about_us_photos {
         flex-wrap: nowrap;
     }
 
@@ -161,17 +161,17 @@ body {
         max-width: 300px;
     }
 
-    .map{
+    .map {
         width: 60%;
         height: 400px;
     }
 
-    .about-description{
+    .about-description {
         width: 75%;
         margin-bottom: 50px;
     }
 
-    .about-stack__technologies{
+    .about-stack__technologies {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;

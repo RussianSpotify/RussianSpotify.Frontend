@@ -1,4 +1,4 @@
-export const CurrentPlaylistIcon = (props:any) => {
+export const CurrentPlaylistIcon = (props: any) => {
     return (
         <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
              stroke="#000000" onClick={props.onClick}>

@@ -13,8 +13,7 @@ const AboutCard = (props: IAboutCard) => {
                     className="about-us-photo-image"
                     src={props.image}
                     alt={props.title}
-                    style={{
-                    }}
+                    style={{}}
                 />
                 <div className="about-image-title">
                     {props.title}

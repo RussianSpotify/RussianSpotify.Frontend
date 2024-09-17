@@ -202,8 +202,7 @@ const SongCard: FC<ISongCard> = observer(({song, order_number, onModalOpen, play
                     image.style.animation = "none";
                 }
             }
-        }
-        else {
+        } else {
             playerStore.Player = getSong(song, userStore.user, playlist);
             playerStore.IsPlaying = true;
             audio.play();
@@ -227,7 +226,7 @@ const SongCard: FC<ISongCard> = observer(({song, order_number, onModalOpen, play
                 style={{marginRight: isMouseOverPlay ? '17px' : '12px', marginLeft: isMouseOverPlay ? '-5px' : '0'}}>
                 {
                     isMouseOverPlay ?
-                        isPlaying ? 
+                        isPlaying ?
                             <StartIcon/>
                             : <StopIcon/>
                         : <p>{order_number}</p>
@@ -259,7 +258,9 @@ const SongCard: FC<ISongCard> = observer(({song, order_number, onModalOpen, play
                         }
                     </div>
                     <div className="playlist-page__songs__list__main__song-card__title__info__artist-names">
-                        <p>{artistsMapped}</p>
+                        <p>{artistsMapped.map(item => (
+                            item
+                        ))}</p>
                     </div>
                 </div>
             </div>

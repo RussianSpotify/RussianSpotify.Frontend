@@ -36,9 +36,12 @@ const SearchAuthorCard = (props: any) => {
                     onError={handleImageNotLoaded}/>
             </div>
             <div className="search-author__right">
-                    <h2 className="search-author__right__author-name"
-                        onClick={() => navigate(`/author/${author.authorName}`)}>{author.authorName}</h2>
-                <p className="search-author__right__author-playlists">{playlistsMapped} {additionalPlaylistCountDisplay} {additionalsEnding}</p>
+                <h2 className="search-author__right__author-name"
+                    onClick={() => navigate(`/author/${author.authorName}`)}>{author.authorName}</h2>
+                <p
+                    className="search-author__right__author-playlists">{playlistsMapped.map(item => (
+                    item
+                ))} {additionalPlaylistCountDisplay} {additionalsEnding}</p>
             </div>
         </div>
     )

@@ -51,8 +51,8 @@ export const authRoutes = [
         Component: PlaylistPage
     },
     {
-      path: routeNames.AUTHOR_SONGS_ROUTE,
-      Component: PlaylistPage
+        path: routeNames.AUTHOR_SONGS_ROUTE,
+        Component: PlaylistPage
     },
     {
         path: routeNames.SEARCH_PAGE,

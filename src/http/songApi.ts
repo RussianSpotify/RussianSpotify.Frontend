@@ -14,48 +14,48 @@ import {GetSongs} from "../utils/dto/song/getSongs";
  * @param toCycle - циклировать воспроизведение песен
  * */
 export const getSongsByFilter = async (filterName: string, filterValue: string, pageNumber: number, pageSize: number, toCycle: boolean = false): Promise<GetSongs> => {
-        if (!filterValue || !filterName)
-            return new GetSongs([], 0);
+    if (!filterValue || !filterName)
+        return new GetSongs([], 0);
 
-        const response =
-            await $authHost.get(`api/Song/GetSongsByFilter?` +
-                new URLSearchParams({
-                    filterName: filterName,
-                    filterValue: filterValue,
-                    pageNumber: pageNumber.toString(),
-                    pageSize: pageSize.toString()
-                }));
+    const response =
+        await $authHost.get(`api/Song/GetSongsByFilter?` +
+            new URLSearchParams({
+                filterName: filterName,
+                filterValue: filterValue,
+                pageNumber: pageNumber.toString(),
+                pageSize: pageSize.toString()
+            }));
 
-        if (response.status !== 200 || response.data === undefined)
-            return new GetSongs([], 0);
+    if (response.status !== 200 || response.data === undefined)
+        return new GetSongs([], 0);
 
-        let result: Song[] = [];
-        for (let i: number = 0; i < response.data.entities.length; ++i) {
-            const songItem = response.data.entities[i];
+    let result: Song[] = [];
+    for (let i: number = 0; i < response.data.entities.length; ++i) {
+        const songItem = response.data.entities[i];
 
-            result[i] = Song.init(
-                songItem.songId,
-                songItem.songName,
-                songItem.imageId,
-                songItem.duration,
-                songItem.category,
-                songItem.authors,
-                null,
-                null,
-                songItem.isInFavorite);
-        }
-
-        for (let i = 1; i < response.data.entities.length; ++i)
-            result[i].prevSong = result[i - 1];
-
-        for (let i = 0; i < response.data.entities.length - 1; ++i)
-            result[i].nextSong = result[i + 1];
-
-        if (toCycle && result.length > 1)
-            result[result.length - 1].nextSong = result[0]
-
-        return new GetSongs(result, response.data.totalCount);
+        result[i] = Song.init(
+            songItem.songId,
+            songItem.songName,
+            songItem.imageId,
+            songItem.duration,
+            songItem.category,
+            songItem.authors,
+            null,
+            null,
+            songItem.isInFavorite);
     }
+
+    for (let i = 1; i < response.data.entities.length; ++i)
+        result[i].prevSong = result[i - 1];
+
+    for (let i = 0; i < response.data.entities.length - 1; ++i)
+        result[i].nextSong = result[i + 1];
+
+    if (toCycle && result.length > 1)
+        result[result.length - 1].nextSong = result[0]
+
+    return new GetSongs(result, response.data.totalCount);
+}
 
 /** Возвращает Player(SongContent) с api для прослушивания песни
  * @param song - песня, которая будет сейчас играть

@@ -21,7 +21,7 @@ export const getAuthor: (authorName: string, pageNumberForSongs: number, pageSiz
         const songs = await getSongsByFilter(songFilters.authorSongsFilter, authorName, pageNumberForSongs, pageSizeForSongs);
 
         const playlists = await getPlaylistsByFilter(playlistFilters.authorPlaylistsFilter, authorName, pageNumberForPlaylists, pageSizeForPlaylists);
-        
+
         return AuthorModel.init(
             authorInfoResponse.data.name,
             getImage(authorInfoResponse.data.authorPhotoId),

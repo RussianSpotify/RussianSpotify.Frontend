@@ -1,18 +1,16 @@
 import "./styles/AuthForm.css";
 import React, {useContext, useState} from "react";
 import InputLoginWidget from "../InputLoginWidget/InputLoginWidget";
-import {VkButtonSvg} from "../../../../assets/mock/loginpage/buttons-SVGs/VkButtonSvg";
 import {GoogleButtonSvg} from "../../../../assets/mock/loginpage/buttons-SVGs/GoogleButtonSvg";
 import {login} from "../../../../http/authApi";
 import UserLoginDto from "../../../../utils/dto/user/userLoginDto";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import routeNames from "../../../../utils/routeNames";
 import {UserContext} from "../../../../index";
 import {observer} from "mobx-react-lite";
 import loadUser from "../../../../functions/loadUser";
-import { oAuthRoutes } from "../../../../utils/oauthUrls/oAuthRoutes";
+import {oAuthRoutes} from "../../../../utils/oauthUrls/oAuthRoutes";
 import {codeConfirmationOperations} from "../../../../utils/operations/codeConfirmationOperations";
-import { YandexButtonSvg } from "../../../../assets/mock/loginpage/buttons-SVGs/YandexButtonSvg";
 
 const AuthForm = observer(() => {
     const [email, setEmail] = useState("")

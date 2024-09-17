@@ -6,12 +6,10 @@ import NavBar from "./commonComponents/NavBar/NavBar";
 import {PlayerContext, UserContext} from "./index";
 import {observer} from "mobx-react-lite";
 import MakeSubscriptionModal from "./commonComponents/NavBar/components/makeSubscriptionModal/makeSubscriptionModal";
-import {getSubscription} from "./http/subApi";
 import loadUser from "./functions/loadUser";
 import Player from "./commonComponents/Player/Player";
 import SideBar from "./commonComponents/SideBar/SideBar";
-import CreateOrEditPlaylistModal
-    from "./commonComponents/SideBar/components/CreateOrEditPlaylistModal/CreateOrEditPlaylistModal";
+import CreateOrEditPlaylistModal from "./commonComponents/SideBar/components/CreateOrEditPlaylistModal/CreateOrEditPlaylistModal";
 import CreateOrEditSongModal from "./commonComponents/SideBar/components/CreateOrEditSongModal/CreateOrEditSongModal";
 
 const App = observer(() => {

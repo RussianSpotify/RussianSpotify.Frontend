@@ -10,12 +10,12 @@ import cSharp from '../../assets/cSharp.png'
 export default [
     {
         name: 'PostgresSQL',
-        image:  postgres,
+        image: postgres,
         width: "452px",
     },
     {
         name: 'MediatR',
-        image:  mediatR,
+        image: mediatR,
         width: "452px",
     },
     {

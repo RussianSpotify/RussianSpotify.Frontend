@@ -1,5 +1,4 @@
 import React, {FC, useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
 import {ICreateOrEditSongModal} from "../../interfaces/ICreateOrEditSongModal";
 import EditSongDto from "../../../../utils/dto/song/editSongDto";
 import './CreateOrEditPlaylistModal.css'
@@ -21,7 +20,6 @@ const CreateOrEditSongModal: FC<ICreateOrEditSongModal> =
         const [categories, setCategories] = useState(new Array<Category>())
         const [imageFiles, setImageFiles] = useState(new Array<File>())
         const [audioFiles, setAudioFiles] = useState(new Array<File>())
-        const navigate = useNavigate()
         const isCreating = song === undefined
 
         const reset = () => {
@@ -32,8 +30,7 @@ const CreateOrEditSongModal: FC<ICreateOrEditSongModal> =
                     i.categoryName === song?.category)[0].categoryNumber)
                 setImageFiles([])
                 setAudioFiles([])
-            }
-            else
+            } else
                 clear()
         }
 
@@ -105,9 +102,8 @@ const CreateOrEditSongModal: FC<ICreateOrEditSongModal> =
                         alert(`Song '${response.value.songName}' was successfully updated!`)
                         onHide()
                         reloadTrigger()
-                    } else
-                        if (response.status >= 500)
-                            alert('Internal error happened. Please try later!')
+                    } else if (response.status >= 500)
+                        alert('Internal error happened. Please try later!')
                 })
         }
 

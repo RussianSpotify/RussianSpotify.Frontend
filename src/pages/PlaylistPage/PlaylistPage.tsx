@@ -154,7 +154,7 @@ const PlaylistPage = () => {
             setGetting(true);
         }
     }
-    
+
     const handleLikeClick = () => {
         if (!isInLikeProcess) {
             isInLikeProcess = true;
@@ -201,7 +201,10 @@ const PlaylistPage = () => {
                             {currentPlaylist.playlistName}
                         </h1>
                         <p className="playlist-page__main__info__singers">
-                            Made by <span onClick={() => navigate(`/author/${currentPlaylist.authorName}`)}>{currentPlaylist.authorName}</span>
+                            Made by
+                            <span onClick={() => navigate(`/author/${currentPlaylist.authorName}`)}>
+                            {currentPlaylist.authorName}
+                        </span>
                         </p>
                         <p className="playlist-page__main__info__additional">
                             ◦ {songs.length} songs, {formatDuration(songs.reduce((sum, current) => sum + current.duration, 0))}

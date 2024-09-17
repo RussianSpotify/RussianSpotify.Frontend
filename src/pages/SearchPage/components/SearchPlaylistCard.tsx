@@ -24,7 +24,7 @@ const SearchPlaylistCard = (props: any) => {
                     <p className="search-playlist__right__bottom__description">
                         {
                             playlist.isAlbum
-                            ? 'Album' : 'Playlist'
+                                ? 'Album' : 'Playlist'
                         }
                     </p>
                     <p className="search-playlist__right__bottom__author">

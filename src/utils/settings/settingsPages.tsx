@@ -1,5 +1,3 @@
-import SettingsGeneral from "../../pages/SettingsPage/components/settingsGeneral";
-import SettingsPlayer from "../../pages/SettingsPage/components/settingsPlayer";
 import SettingsPersonal from "../../pages/SettingsPage/components/settingsPersonal";
 
 export default [
