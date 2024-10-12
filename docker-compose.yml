@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: karantuligor/russian-spotify-frontend
+    container_name: RussianSpotify.Frontend
+    environment:
+      REACT_APP_SPOTIFY_API: "http://localhost:5103/"
+      REACT_APP_SPOTIFY_UI: "http://localhost:3000"
+      REACT_APP_Google_CLIENT_ID: "258758556440-fc39tl8mv0eihvj1hvc8amltehppehn4.apps.googleusercontent.com"
+      REACT_APP_Google_Redirect_URL: "http://localhost:5103/api/OAuth/Google/Callback"
+      REACT_APP_Google_Scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
+      REACT_APP_Google_ResponseType: "code"
+    ports:
+      - "3000:3000"
