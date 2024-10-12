@@ -8,7 +8,7 @@ services:
     image: karantuligor/russian-spotify-frontend
     container_name: RussianSpotify.Frontend
     environment:
-      REACT_APP_SPOTIFY_API: "http://http://176.57.208.209/"
+      REACT_APP_SPOTIFY_API: "http://176.57.208.209/"
       REACT_APP_SPOTIFY_UI: "http://localhost:3000"
       REACT_APP_Google_CLIENT_ID: "258758556440-fc39tl8mv0eihvj1hvc8amltehppehn4.apps.googleusercontent.com"
       REACT_APP_Google_Redirect_URL: "http://localhost:5103/api/OAuth/Google/Callback"
