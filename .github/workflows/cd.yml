@@ -51,5 +51,5 @@ jobs:
                     docker compose down
                     docker compose pull
                     docker compose up -d
-                    docker images --filter dangling=true -q --no-trunc
+                    docker rmi $(docker images --filter dangling=true -q --no-trunc)
                     
