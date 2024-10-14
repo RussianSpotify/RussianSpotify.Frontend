@@ -29,7 +29,7 @@ const App = observer(() => {
             .then(user => {
                 if (user !== undefined) {
                     userStore.login(user)
-                    setIsSubscribed(user.isSubscribed)
+                    setIsSubscr ibed(user.isSubscribed)
                 }
             })
             .finally(() => setIsLoading(false))
