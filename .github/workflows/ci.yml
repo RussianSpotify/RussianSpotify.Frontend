@@ -30,7 +30,7 @@ jobs:
     - name: Build
       run: npm run build
       env:
-        ci: false
+        CI: false
 
     - name: Run the tests
       run: npm test
