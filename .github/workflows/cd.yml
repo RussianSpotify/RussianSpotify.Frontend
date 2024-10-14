@@ -37,7 +37,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           key: ${{ secrets.SSH_KEY }}
           source: "docker-compose.yml"
-          target: "$HOME/docker"
+          target: "$HOME/docker/frontend"
 
       - name: Starting docker-compose
         uses: appleboy/ssh-action@v1.1.0
@@ -47,6 +47,9 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-                    cd $HOME/docker
+                    cd $HOME/docker/frontend
+                    docker compose down
+                    docker compose pull
                     docker compose up -d
+                    docker images --filter dangling=true -q --no-trunc
                     
