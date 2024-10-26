@@ -1,8 +1,7 @@
 import { $authHost } from ".";
 import {ResponseWithMessage} from "../utils/dto/responseWithMessage";
-import { ChatResponse } from "../commonComponents/interfaces/Chat/ChatResponse"
 
-export const getChats = async (): Promise<ResponseWithMessage<ChatResponse>> => {
+export const getChats = async () => {
     const response = await $authHost.get(`api/Chat/GetChats`);
 
     if (response.status !== 200) {
@@ -12,5 +11,18 @@ export const getChats = async (): Promise<ResponseWithMessage<ChatResponse>> => 
         );
     }
     
+    return new ResponseWithMessage(response.status, '', response.data);
+}
+
+export const getMessagesInChat = async (chatId: string) => {
+    const response = await $authHost.get(`api/Chat/${chatId}`);
+
+    if (response.status !== 200) {
+        return new ResponseWithMessage(
+            response.status,
+            `Ошибка на сервере ${response.data.title}`
+        );
+    }
+
     return new ResponseWithMessage(response.status, '', response.data);
 }

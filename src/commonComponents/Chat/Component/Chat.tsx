@@ -1,97 +1,85 @@
-import React, { useContext, useEffect, useState } from 'react';
-import * as signalR from '@microsoft/signalr';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { UserContext } from '../../..';
 import { getChats } from '../../../http/chatApi';
-import { ChatResponse } from "../../interfaces/Chat/ChatResponse";
 import './Chat.css';
-import ChatSupport from './ChatSupport';
+import { GetStoryResponseItem } from '../../interfaces/Chat/GetStoryResponseItem';
+import { GetStoryResponse } from '../../interfaces/Chat/GetStoryResponse';
+import { useWebSocket } from '../../../hub/WebSocketProvider';
 
 const Chat: React.FC = observer(() => {
+    const { sendMessage, connection } = useWebSocket();
+    const [selectedChatId, setSelectedChatId] = useState<string>("");
+    const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
+
     const userStore = useContext(UserContext);
-    const defaultConnection = "https://localhost:7177/chat-hub";
-    const [connection, setConnection] = useState<signalR.HubConnection>();
-    const [messages, setMessages] = useState<{ [key: string]: string[] }>({});
-    const [chatList, setChatList] = useState<ChatResponse | undefined>({ entities: [], totalCount: 0 });
-    const [selectedChatId, setSelectedChatId] = useState<string | null>(null);
+
+    const [messages, setMessages] = useState<GetStoryResponse | null>({ entities: [], totalCount: 0 });
     const [newMessage, setNewMessage] = useState<string>("");
-    const [isChatOpen, setIsChatOpen] = useState<boolean>(false); // Состояние видимости чата
+
+    // useEffect(() => {
+    //     if (connection) {
+    //     connection.on("ReceiveMessage", ({ message, whoSentUsername, senderId }) => {
+    //         console.log(`message received: ${message}`)
+    //         setMessages(prevMessages => ({
+    //             ...prevMessages,
+    //             entities: [
+    //                 ...(prevMessages?.entities || []),
+    //                 {
+    //                     id: new Date().getTime().toString(),
+    //                     message,
+    //                     sender: whoSentUsername,
+    //                     sentDate: new Date().toISOString(),
+    //                     senderId: senderId,
+    //                     senderAvatar: "",
+    //                 } as GetStoryResponseItem
+    //             ],
+    //             totalCount: (prevMessages?.totalCount || 0) + 1,
+    //         }));
+    //     });
+
+    //     connection.onclose((error) => {
+    //         console.error("Соединение закрыто с ошибкой: ", error);
+    //     });
+    //     }
+    // }, [connection]);
+
 
     useEffect(() => {
-        const newConnection = new signalR.HubConnectionBuilder()
-            .configureLogging(signalR.LogLevel.Debug)
-            .withUrl(defaultConnection, {
-                skipNegotiation: true,
-                transport: signalR.HttpTransportType.WebSockets,
-                accessTokenFactory: () => localStorage.getItem('token') ?? "default",
-            })
-            .withAutomaticReconnect()
-            .build();
-
-        setConnection(newConnection);
-    }, []);
-
-    useEffect(() => {
-        if (userStore._isAdmin) {
-            getChats()
-                .then(x => {
-                    if (x.status !== 200) {
-                        alert(x.message);
-                    } else {
-                        setChatList(x.value);
+        getChats()
+            .then(x => {
+                if (x.status !== 200) {
+                    alert(x.message);
+                } else {
+                    if (!userStore._isAdmin && x.value.entities.length > 0) {
+                        setSelectedChatId(x.value.entities[0].id.toString());
+                        console.log(selectedChatId)
                     }
-                });
-        }
-    }, [userStore._isAdmin]);
-
-    useEffect(() => {
-        if (connection) {
-            connection.start()
-                .then(() => {
-                    console.log("Соединение установлено");
-
-                    connection.on("ReceiveMessage", (chatId: string, message: string) => {
-                        setMessages(prev => ({
-                            ...prev,
-                            [chatId]: [...(prev[chatId] || []), message],
-                        }));
-                    });
-
-                    connection.onclose((error) => {
-                        console.error("Соединение закрыто с ошибкой: ", error);
-                    });
-
-                    connection.invoke("OnConnectedAsync");
-                })
-                .catch(error => console.error("Ошибка при подключении: ", error));
-        }
-    }, [connection]);
-
-    const sendMessage = async () => {
-        if (connection && newMessage && selectedChatId) {
-            try {
-                await connection.invoke("SendMessage", selectedChatId, newMessage);
-                setNewMessage("");
-            } catch (error) {
-                console.error("Ошибка при отправке сообщения: ", error);
-            }
-        }
-    };
-
-    const handleChatSelect = (chatId: string) => {
-        setSelectedChatId(chatId);
-    };
+                }
+            });
+    }, []);
 
     const toggleChat = () => {
         setIsChatOpen(!isChatOpen);
     };
 
     return (
-        <ChatSupport 
-        chats={chatList} 
-        isAdmin={userStore._isAdmin} 
-        userChatId={userStore._chatId}
-        />
+        <>
+            <button onClick={toggleChat} className="chat-toggle-button">
+                {isChatOpen ? 'Закрыть чат' : 'Открыть чат'}
+            </button>
+            {isChatOpen && (
+                    <div className="chat-input">
+                        <input
+                            type="text"
+                            value={newMessage}
+                            onChange={(e) => setNewMessage(e.target.value)}
+                            placeholder="Введите ваше сообщение"
+                        />
+                        <button onClick={() => sendMessage(newMessage, selectedChatId)}>Отправить</button>
+                    </div>
+            )}
+        </>
     );
 });
 

@@ -11,6 +11,7 @@ import Player from "./commonComponents/Player/Player";
 import SideBar from "./commonComponents/SideBar/SideBar";
 import CreateOrEditPlaylistModal from "./commonComponents/SideBar/components/CreateOrEditPlaylistModal/CreateOrEditPlaylistModal";
 import CreateOrEditSongModal from "./commonComponents/SideBar/components/CreateOrEditSongModal/CreateOrEditSongModal";
+import Chat from './commonComponents/Chat/Component/Chat';
 
 const App = observer(() => {
     const [isLoading, setIsLoading] = useState(true)
@@ -73,6 +74,7 @@ const App = observer(() => {
                     <NavBar setShowSubModal={setShowSubscriptionModal}/>
                     <AppRouter/>
                 </div>
+                {!userStore._isAdmin && <Chat /> }
                 <MakeSubscriptionModal show={showSubscriptionModal} onHide={() => setShowSubscriptionModal(false)}/>
                 <CreateOrEditPlaylistModal
                     show={showCreatePlaylistModal}
