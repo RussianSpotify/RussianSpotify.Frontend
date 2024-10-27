@@ -59,7 +59,7 @@ const Chat: React.FC = observer(() => {
         if (messagesEndRef.current && (messages?.entities.length || 0) > 0) {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         }
-    }, [messages?.entities.length, selectedChatId]);
+    }, [messages?.entities.length, selectedChatId, isChatOpen]);
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {

@@ -140,9 +140,9 @@ const CreateOrEditSongModal: FC<ICreateOrEditSongModal> =
                         setCategories(categoriesMapped)
                         if (song)
                             setCategory(categoriesMapped.filter(i =>
-                                i.categoryName === song.category)[0].categoryNumber)
+                                i.categoryName === song.category)[0]?.categoryNumber)
                         else
-                            setCategory(categories[0].categoryNumber)
+                            setCategory(categories[0]?.categoryNumber)
                     } else if (response.status >= 500)
                         alert('Internal error happened. Please try later!')
                 })

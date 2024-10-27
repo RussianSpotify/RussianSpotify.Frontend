@@ -34,8 +34,8 @@ const SideBar = (props: any) => {
                         </div>
                     }
                         {
-                            navigationElementsProps.map(i => (
-                                <NavigationElement image={i.icon} title={i.title}
+                            navigationElementsProps.map((i, idx) => (
+                                <NavigationElement key={idx} image={i.icon} title={i.title}
                                                    onClick={() => navigate(i.navigateTo)}/>
                             ))
                         }
