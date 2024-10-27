@@ -41,8 +41,7 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
                                 message,
                                 sender: whoSentUsername,
                                 sentDate: new Date().toISOString(),
-                                senderId: senderId,
-                                senderAvatar: "",
+                                senderId: senderId
                             } as GetStoryResponseItem
                         ],
                         totalCount: (prevMessages?.totalCount || 0) + 1,

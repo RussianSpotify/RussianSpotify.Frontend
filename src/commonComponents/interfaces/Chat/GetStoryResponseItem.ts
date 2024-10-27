@@ -4,6 +4,5 @@ export interface GetStoryResponseItem {
     sender: string;
     sentDate: string;
     senderId: string;
-    senderAvatar: string;
     senderImageId: string;
 }

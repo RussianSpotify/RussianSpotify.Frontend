@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { ChatResponse } from "../../commonComponents/interfaces/Chat/ChatResponse";
 import { getChats, getMessagesInChat } from "../../http/chatApi";
 import './AdminChatPage.css';
-import { GetStoryResponse } from "../../commonComponents/interfaces/Chat/GetStoryResponse";
-import { GetStoryResponseItem } from "../../commonComponents/interfaces/Chat/GetStoryResponseItem";
 import ChatMessage from "../../commonComponents/Chat/Component/ChatMessage";
 import { getImage } from "../../http/fileApi";
 import { useWebSocket } from "../../hub/WebSocketProvider";
@@ -81,7 +79,7 @@ const AdminChatPage: React.FC = observer(() => {
             <div className="chat-window">
                 {selectedChat ? (
                     <ChatMessage 
-                        messages={messages} // Используем сообщения из контекста
+                        messages={messages}
                         selectedChat={selectedChat}
                         newMessage={newMessage}
                         chatList={chatList}
