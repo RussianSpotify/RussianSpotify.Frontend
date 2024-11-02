@@ -11,6 +11,8 @@ import routeNames from "../../utils/routeNames";
 import {useContext} from "react";
 import {UserContext} from "../../index";
 import roles from "../../utils/roles";
+// @ts-ignore
+import adminChatImage from '../../assets/sidebar/chat.png'
 
 const SideBar = (props: any) => {
     const {setShowCreatePlaylistModal} = props
@@ -23,9 +25,17 @@ const SideBar = (props: any) => {
             <div className="sidebar">
                 <div className="sidebar__nav">
                     <div className="sidebar__nav__main">
+                    {
+                        userStore._isAdmin && <div className="sidebar__nav__admin">
+                            <NavigationElement 
+                                title={`Support Chat`}
+                                image={adminChatImage}
+                                onClick={() => navigate(routeNames.ADMIN_CHAT_PAGE)}/>
+                        </div>
+                    }
                         {
-                            navigationElementsProps.map(i => (
-                                <NavigationElement image={i.icon} title={i.title}
+                            navigationElementsProps.map((i, idx) => (
+                                <NavigationElement key={idx} image={i.icon} title={i.title}
                                                    onClick={() => navigate(i.navigateTo)}/>
                             ))
                         }

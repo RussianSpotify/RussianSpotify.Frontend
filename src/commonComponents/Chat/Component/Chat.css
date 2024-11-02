@@ -1,0 +1,144 @@
+/* Chat.css */
+
+.support-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.support-window {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    color: black;
+    border-bottom: 1px solid #ddd;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.support-content {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.message-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.my-message {
+    justify-content: flex-end;
+}
+
+.my-message img {
+    display: none;
+}
+
+.other-message {
+    justify-content: flex-start;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.message-content {
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.message-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.message-date {
+    margin-left: 10px;
+}
+
+.message-text {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    max-width: 100%;
+    color: black;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.my-message .message-text {
+    background-color: #007bff;
+    color: white;
+}
+
+.no-messages {
+    color: #888;
+}
+
+.message-input {
+    display: flex;
+    padding: 10px;
+}
+
+.message-input input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.message-input button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}

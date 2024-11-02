@@ -18,8 +18,10 @@ const AppRouter = observer(() => {
                 ))
             }
             {
-                userStore.isAuth && authRoutes.map(({path, Component}) => (
-                    <Route path={path} element=<Component/> key={path}/>
+                userStore.isAuth && authRoutes.map(({path, Component, adminRequired}) => (
+                    adminRequired
+                     ? userStore._isAdmin && <Route path={path} element=<Component/> key={path}/>
+                     : <Route path={path} element=<Component/> key={path}/>
                 ))
             }
             {

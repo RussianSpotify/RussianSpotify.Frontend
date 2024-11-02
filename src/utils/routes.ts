@@ -11,6 +11,7 @@ import AuthorPage from "../pages/AuthorPage/AuthorPage";
 // @ts-ignore
 import ResetPasswordPage from "../pages/ResetPasswordPage/ResetPasswordPage";
 import AboutPage from "../pages/AboutPage/AboutPage";
+import AdminChatPage from "../pages/AdminChatPage/AdminChatPage";
 
 export const routes = []
 
@@ -36,34 +37,47 @@ export const notAuthRoutes = [
 export const authRoutes = [
     {
         path: routeNames.HOME_PAGE,
-        Component: HomePage
+        Component: HomePage,
+        adminRequired: false
     },
     {
         path: routeNames.ACCOUNT_PAGE,
-        Component: AccountPage
+        Component: AccountPage,
+        adminRequired: false
     },
     {
         path: routeNames.SETTINGS_PAGE,
-        Component: SettingsPage
+        Component: SettingsPage,
+        adminRequired: false
     },
     {
         path: routeNames.PLAYLIST_PAGE_ROUTE,
-        Component: PlaylistPage
+        Component: PlaylistPage,
+        adminRequired: false
     },
     {
         path: routeNames.AUTHOR_SONGS_ROUTE,
-        Component: PlaylistPage
+        Component: PlaylistPage,
+        adminRequired: false
     },
     {
         path: routeNames.SEARCH_PAGE,
-        Component: SearchPage
+        Component: SearchPage,
+        adminRequired: false
     },
     {
         path: routeNames.AUTHOR_PAGE_ROUTE,
-        Component: AuthorPage
+        Component: AuthorPage,
+        adminRequired: false
     },
     {
         path: routeNames.ABOUT_PAGE,
-        Component: AboutPage
+        Component: AboutPage,
+        adminRequired: false
+    },
+    {
+        path: routeNames.ADMIN_CHAT_PAGE,
+        Component: AdminChatPage,
+        adminRequired: true
     }
 ]

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import UserStore from "./stores/userStore";
 import PlayerStore from "./stores/playerStore";
+import { WebSocketProvider } from './hub/WebSocketProvider';
 
 export const UserContext = createContext(new UserStore());
 
@@ -14,10 +15,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     // <React.StrictMode>
-    <UserContext.Provider value={new UserStore()}>
-        <PlayerContext.Provider value={new PlayerStore()}>
-            <App/>
-        </PlayerContext.Provider>
-    </UserContext.Provider>
+    <WebSocketProvider>
+        <UserContext.Provider value={new UserStore()}>
+            <PlayerContext.Provider value={new PlayerStore()}>
+                <App/>
+            </PlayerContext.Provider>
+        </UserContext.Provider>
+    </WebSocketProvider>
     // </React.StrictMode>
 );

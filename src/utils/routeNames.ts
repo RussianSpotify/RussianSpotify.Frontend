@@ -14,5 +14,6 @@ export default {
     AUTHOR_SONGS_NAV: '/playlist/author-',
     PLAYLIST_PAGE_ROUTE: '/playlist/:id',
     PLAYLIST_PAGE_NAV: '/playlist/',
-    ABOUT_PAGE: '/about-us'
+    ABOUT_PAGE: '/about-us',
+    ADMIN_CHAT_PAGE: '/admin-chat'
 }

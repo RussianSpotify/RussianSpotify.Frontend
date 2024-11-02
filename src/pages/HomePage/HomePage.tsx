@@ -133,7 +133,8 @@ const HomePage = observer((props: any) => {
                         {
                             discoveryCardsShow.map(i => (
                                 <DiscoveryCard
-                                    author={i}/>
+                                    author={i}
+                                    key={i.authorId}/>
                             ))
                         }
                     </div>

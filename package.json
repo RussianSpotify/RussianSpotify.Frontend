@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@microsoft/signalr": "^8.0.7",
     "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^2.2.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -33,7 +34,9 @@
     "lint": "eslint --ext .ts,.tsx ./src"
   },
   "jest": {
-    "transformIgnorePatterns": ["node_modules\/(?!axios)"]
+    "transformIgnorePatterns": [
+      "node_modules/(?!axios)"
+    ]
   },
   "eslintConfig": {
     "extends": [
