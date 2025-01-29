@@ -6,10 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     image: karantuligor/russian-spotify-frontend
-    container_name: RussianSpotify.Frontend
+    container_name: russianspotify-frontend
     environment:
       REACT_APP_SPOTIFY_API: "http://localhost:80/"
       REACT_APP_SPOTIFY_UI: "http://localhost:3000"
+      REACT_APP_SPOTIFY_API_FILES: "http://localhost:5111"
       REACT_APP_Google_CLIENT_ID: "258758556440-fc39tl8mv0eihvj1hvc8amltehppehn4.apps.googleusercontent.com"
       REACT_APP_Google_Redirect_URL: "http://176.57.208.209/api/OAuth/Google/Callback"
       REACT_APP_Google_Scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
