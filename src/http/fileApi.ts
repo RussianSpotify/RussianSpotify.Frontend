@@ -1,4 +1,4 @@
-import {$authHost} from "./index";
+import {$authHostFiles} from "./index";
 import {ResponseWithMessage} from "../utils/dto/responseWithMessage";
 
 /** Функция которая возвращает ссылку на картинку
@@ -6,14 +6,14 @@ import {ResponseWithMessage} from "../utils/dto/responseWithMessage";
  * */
 export const getImage: (imageId: string) => string
     = (imageId) => {
-    return `${process.env.REACT_APP_SPOTIFY_API}api/File/image/${imageId}`;
+    return `${process.env.REACT_APP_SPOTIFY_API_FILES}api/File/image/${imageId}`;
 }
 
 export const uploadFile = async (file: File) => {
     let formData = new FormData();
     formData.append('files', file)
 
-    const response = await $authHost.post('api/file', formData, {
+    const response = await $authHostFiles.post('api/file', formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
@@ -26,7 +26,7 @@ export const uploadFile = async (file: File) => {
 }
 
 export const deleteFile = async (fileId: string) => {
-    const response = await $authHost.delete('api/File/Delete?' +
+    const response = await $authHostFiles.delete('api/File/Delete?' +
         new URLSearchParams({
             fileId: fileId
         }))
