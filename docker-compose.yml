@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: karantuligor/russian-spotify-frontend
-    container_name: RussianSpotify.Frontend
+    container_name: russianspotify-frontend
     environment:
       REACT_APP_SPOTIFY_API: "http://localhost:80/"
       REACT_APP_SPOTIFY_UI: "http://localhost:3000"
