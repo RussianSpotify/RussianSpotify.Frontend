@@ -21,6 +21,16 @@ const $authHostFiles = axios.create({
     validateStatus: status => true
 })
 
+const $hostSubscribe = axios.create({
+    baseURL: process.env.REACT_APP_SPOTIFY_SUBSCRIBE_API,
+    validateStatus: status => true
+})
+
+const $authSubscribe = axios.create({
+    baseURL: process.env.REACT_APP_SPOTIFY_SUBSCRIBE_API,
+    validateStatus: status => true
+})
+
 // TODO: Пофиксить вызов метода RefreshToken, он должен быть не тут
 function authInterceptor(config: any) {
     let token = localStorage.getItem('token')
@@ -45,10 +55,13 @@ function authInterceptor(config: any) {
 
 $authHost.interceptors.request.use(authInterceptor)
 $authHostFiles.interceptors.request.use(authInterceptor)
+$authSubscribe.interceptors.request.use(authInterceptor)
 
 export {
     $host,
     $authHost,
     $hostFiles,
     $authHostFiles,
+    $hostSubscribe,
+    $authSubscribe
 }

@@ -50,8 +50,14 @@ export const getUser = async () => {
 
     const data = response!.data
     return response!.status === 200
-        ? User.init(data.userId, data.email, data.userName,
-            `${process.env.REACT_APP_SPOTIFY_API}api/File/image/${data.userPhotoId}`, data.roles)
+        ? User.init(
+            data.userId,
+            data.email,
+            data.userName,
+            `${process.env.REACT_APP_SPOTIFY_API}api/File/image/${data.userPhotoId}`,
+            data.roles,
+            data.paymentHistory?.items || [])
+
         : undefined
 }
 

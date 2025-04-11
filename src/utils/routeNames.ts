@@ -15,5 +15,6 @@ export default {
     PLAYLIST_PAGE_ROUTE: '/playlist/:id',
     PLAYLIST_PAGE_NAV: '/playlist/',
     ABOUT_PAGE: '/about-us',
-    ADMIN_CHAT_PAGE: '/admin-chat'
+    ADMIN_CHAT_PAGE: '/admin-chat',
+    PAYMENT_HISTORY_PAGE: '/payment',
 }
