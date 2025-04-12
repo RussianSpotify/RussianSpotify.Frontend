@@ -1,5 +1,10 @@
 import {makeAutoObservable} from "mobx";
 
+type PaymentItem = {
+    amount: number;
+    createdAt: string;
+};
+
 export default class User {
     _id: string;
     _email: string;
@@ -8,6 +13,7 @@ export default class User {
     _subStartDate: Date;
     _subEndDate: Date;
     photoUrl: string;
+    _paymentHistory: PaymentItem[];
 
     constructor() {
         this._id = ''
@@ -17,10 +23,18 @@ export default class User {
         this._subStartDate = new Date()
         this._subEndDate = new Date()
         this.photoUrl = ""
+        this._paymentHistory = [];
         makeAutoObservable(this)
     }
 
-    static init(id: string, email: string, username: string, photoUrl: string, roles: string[]) {
+    static init(
+        id: string,
+        email: string,
+        username: string,
+        photoUrl: string,
+        roles: string[],
+        paymentHistory: PaymentItem[])
+    {
         let newUser = new User()
 
         newUser._id = id;
@@ -28,6 +42,7 @@ export default class User {
         newUser._username = username;
         newUser.photoUrl = photoUrl;
         newUser._roles = roles;
+        newUser._paymentHistory = paymentHistory;
 
         return newUser
     }
@@ -35,6 +50,10 @@ export default class User {
     initSubscription(startDate: Date, endDate: Date) {
         this._subStartDate = new Date(startDate)
         this._subEndDate = new Date(endDate)
+    }
+
+    setPaymentHistory(items: PaymentItem[]) {
+        this._paymentHistory = items;
     }
 
     get isSubscribed() {

@@ -12,6 +12,7 @@ import AuthorPage from "../pages/AuthorPage/AuthorPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage/ResetPasswordPage";
 import AboutPage from "../pages/AboutPage/AboutPage";
 import AdminChatPage from "../pages/AdminChatPage/AdminChatPage";
+import PaymentHistoryPage from "../pages/PaymentHistoryPage/PaymentHistoryPage";
 
 export const routes = []
 
@@ -79,5 +80,10 @@ export const authRoutes = [
         path: routeNames.ADMIN_CHAT_PAGE,
         Component: AdminChatPage,
         adminRequired: true
+    },
+    {
+        path: routeNames.PAYMENT_HISTORY_PAGE,
+        Component: PaymentHistoryPage,
+        adminRequired: false
     }
 ]

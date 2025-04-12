@@ -1,7 +1,9 @@
 // @ts-ignore
 import arrow from "../../assets/arrow.png"
 // @ts-ignore
-import subscription_icon from "../../assets/subscription_icon.png"
+import subscription_icon from "../../assets/subscription_icon.png";
+// @ts-ignore
+import payment_icon from "../../assets/payment-icon.png";
 // @ts-ignore
 import logout_icon from "../../assets/logout_icon.png"
 import "./NavBar.css"
@@ -12,6 +14,7 @@ import routeNames from "../../utils/routeNames";
 import {UserContext} from "../../index";
 import {observer} from "mobx-react-lite";
 import handleImageNotLoaded from "../../functions/handleImageNotLoaded";
+import WideOpenElements from "../../utils/navbar/wideOpenElements";
 
 
 const NavBar = observer((props: any) => {
@@ -85,6 +88,14 @@ const NavBar = observer((props: any) => {
                                 }}
                                 icon={subscription_icon}
                                 title="Subscribe"
+                            />
+                        }
+                        {
+                            <WideOpenElement
+                                title="History Payments"
+                                icon={payment_icon}
+                                onClickEvent={() => navigate(routeNames.PAYMENT_HISTORY_PAGE)}
+                                navigateTo={routeNames.PAYMENT_HISTORY_PAGE}
                             />
                         }
                     </div>

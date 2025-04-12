@@ -1,0 +1,55 @@
+﻿.payment-history-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #453c3c;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.payment-title {
+    text-align: center;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    color: white;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #312e2e;
+    border: 1px solid #ddd;
+}
+
+.payment-table thead {
+    background-color: #403737;
+    color: white;
+}
+
+.payment-table th,
+.payment-table td {
+    padding: 14px 18px;
+    color: white;
+    border-bottom: 1px solid #e1e1e1;
+    text-align: left;
+    font-size: 16px;
+}
+
+.payment-table tr:hover {
+    background-color: black;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.payment-table th {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
